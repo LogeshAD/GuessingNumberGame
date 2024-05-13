@@ -11,14 +11,18 @@
     <center>
 
 
-        <h1>Guess The Number</h1>
+        <h1>Guess The Number Using JavaScript
+
+        </h1>
         <br>
         <input type="text" id="Guess_Number">
         <button type="submit" onclick=" Check()">Check</button>
-        <p id="res">You Won</p>
+        <p id="res"></p>
+        <p>Each Correct Answer Score Was +2 Points</p>
         <p id="Crt">The Correct Number Is</p>
         <p id="Score"> Your Turn 10</p>
         <p id="GameOver"></p>
+        <p id="FinalResult"></p>
 
        <button type="reset" onclick="location.reload()">Reset</button>
     </center>
@@ -30,6 +34,9 @@
     var res = document.getElementById('res')
     var Crt = document.getElementById('Crt')
     var totalScore = 10
+
+    CorrectScore = 0
+    FinalResult= document.getElementById(FinalResult)
     function Check() {
         var Guess_Number = document.getElementById("Guess_Number").value
         var New_Number = Math.floor(Math.random() * 10 + 1)
@@ -39,6 +46,10 @@
             score.textContent = totalScore
             Crt.textContent = "Correct"
             score.textContent = 'your Turn Left ' + totalScore
+            CorrectScore = CorrectScore+2
+            FinalResult.textContent = CorrectScore
+            var FinalResult= document.getElementById('FinalResult')
+            FinalResult.textContent = "Your Current Point was" + CorrectScore
 
         }
         else {
@@ -54,9 +65,12 @@
         }
         if (totalScore < 0) {
             alert('Game Over')
-
+            
             var GameOver= document.getElementById('GameOver')
             GameOver.textContent = "Please Click The Reset  to Continue"
+            var FinalResult= document.getElementById('FinalResult')
+            FinalResult.textContent = "Your Final Score Is "+CorrectScore
+            
             return 
         }
 
