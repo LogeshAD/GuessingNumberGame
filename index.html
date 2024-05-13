@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+</head>
+
+<body>
+    <center>
+
+
+        <h1>Guess The Number</h1>
+        <br>
+        <input type="text" id="Guess_Number">
+        <button type="submit" onclick=" Check()">Check</button>
+        <p id="res">You Won</p>
+        <p id="Crt">The Correct Number Is</p>
+        <p id="Score"> Your Turn 10</p>
+        <p id="GameOver"></p>
+
+       <button type="reset" onclick="location.reload()">Reset</button>
+    </center>
+</body>
+
+<script>
+    
+
+    var res = document.getElementById('res')
+    var Crt = document.getElementById('Crt')
+    var totalScore = 10
+    function Check() {
+        var Guess_Number = document.getElementById("Guess_Number").value
+        var New_Number = Math.floor(Math.random() * 10 + 1)
+        var score = document.getElementById('Score')
+        if (Guess_Number == New_Number) {
+            alert('You Won The Game '+totalScore+' Turns left')
+            score.textContent = totalScore
+            Crt.textContent = "Correct"
+            score.textContent = 'your Turn Left ' + totalScore
+
+        }
+        else {
+            res.textContent = 'Wrong';
+            totalScore -= 1;
+            score.textContent = 'your Turn Left ' + totalScore
+            if (totalScore < 0) {
+                score.textContent = " "
+            }
+            Crt.textContent = ' The Correct Number is ' + New_Number
+
+
+        }
+        if (totalScore < 0) {
+            alert('Game Over')
+
+            var GameOver= document.getElementById('GameOver')
+            GameOver.textContent = "Please Click The Reset  to Continue"
+            return 
+        }
+
+    }
+</script>
+
+</html>
